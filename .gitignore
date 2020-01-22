@@ -1,2 +1,10 @@
 # Bundler specs file
 Gemfile.lock
+
+# Input data
+files/
+
+# Output data
+screenshots/
+logs/
+dumps/
