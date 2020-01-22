@@ -1,0 +1,164 @@
+{
+  "capabilities": {
+    "appActivity": "app.editors.manager.ui.activities.login.SplashActivity",
+    "appPackage": "com.onlyoffice.documents",
+    "autoGrantPermissions": true,
+    "automationName": "UiAutomator2",
+    "newCommandTimeout": "3600",
+    "platformName": "Android"
+  },
+  "devices": [
+    {
+      "name": "Samsung Galaxy Tab S4",
+      "udid": "ce091829a59c39261c7e",
+      "config": {
+        "opening": {
+          "mode": "smoke",
+          "extensions": [
+            "docx",
+            "doc",
+            "odt",
+            "rtf",
+            "txt",
+            "xlsx",
+            "xls",
+            "ods",
+            "csv",
+            "pptx",
+            "ppt",
+            "odp",
+            "pdf"],
+          "on_error": "exit",
+          "folder": "files/SamsungGalaxyTabS4"
+        },
+        "screenshot": {
+          "type": "static",
+          "count": 2,
+          "folder": "screenshots/SamsungGalaxyTabS4"
+        }
+      }
+    },
+    {
+      "name": "Xiaomi Redmi 5 Plus",
+      "udid": "29e0a4640904",
+      "config": {
+        "opening": {
+          "mode": "smoke",
+          "extensions": [
+            "docx",
+            "doc",
+            "odt",
+            "rtf",
+            "txt",
+            "xlsx",
+            "xls",
+            "ods",
+            "csv",
+            "pptx",
+            "ppt",
+            "odp",
+            "pdf"
+          ],
+          "on_error": "exit",
+          "folder": "files/XiaomiRedmi5Plus"
+        },
+        "screenshot": {
+          "type": "static",
+          "count": 2,
+          "folder": "screenshots/XiaomiRedmi5Plus"
+        }
+      }
+    },
+    {
+      "name": "Samsung Galaxy Tab S2",
+      "udid": "3300f241f9aca2fb",
+      "config": {
+        "opening": {
+          "mode": "smoke",
+          "extensions": [
+            "docx",
+            "doc",
+            "odt",
+            "rtf",
+            "txt",
+            "xlsx",
+            "xls",
+            "ods",
+            "csv",
+            "pptx",
+            "ppt",
+            "odp",
+            "pdf"
+          ],
+          "on_error": "exit",
+          "folder": "files/SamsungGalaxyTabS2"
+        },
+        "screenshot": {
+          "type": "static",
+          "count": 2,
+          "folder": "screenshots/SamsungGalaxyTabS2"
+        }
+      }
+    },
+    {
+      "name": "Samsung Galaxy S8",
+      "udid": "ce04171441ad90760c",
+      "config": {
+        "opening": {
+          "mode": "smoke",
+          "extensions": [
+            "docx",
+            "doc",
+            "odt",
+            "rtf",
+            "txt",
+            "xlsx",
+            "xls",
+            "ods",
+            "csv",
+            "pptx",
+            "ppt",
+            "odp",
+            "pdf"],
+          "on_error": "exit",
+          "folder": "files/SamsungGalaxyS8"
+        },
+        "screenshot": {
+          "type": "static",
+          "count": 2,
+          "folder": "screenshots/SamsungGalaxyS8"
+        }
+      }
+    },
+    {
+      "name": "Samsung Galaxy Note 4",
+      "udid": "4100b454f28a91f7",
+      "config": {
+        "opening": {
+          "mode": "smoke",
+          "extensions": [
+            "docx",
+            "doc",
+            "odt",
+            "rtf",
+            "txt",
+            "xlsx",
+            "xls",
+            "ods",
+            "csv",
+            "pptx",
+            "ppt",
+            "odp",
+            "pdf"],
+          "on_error": "exit",
+          "folder": "files/SamsungGalaxyNote4"
+        },
+        "screenshot": {
+          "type": "static",
+          "count": 2,
+          "folder": "screenshots/SamsungGalaxyNote4"
+        }
+      }
+    }
+  ]
+}
