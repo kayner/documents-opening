@@ -8,3 +8,6 @@ files/
 screenshots/
 logs/
 dumps/
+
+# Info about files
+config/files_data.json
