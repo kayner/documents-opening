@@ -27,13 +27,14 @@
             "pptx",
             "ppt",
             "odp",
-            "pdf"],
+            "pdf"
+          ],
           "on_error": "exit",
           "folder": "files/SamsungGalaxyTabS4"
         },
         "screenshot": {
           "type": "static",
-          "count": 2,
+          "count": 1,
           "folder": "screenshots/SamsungGalaxyTabS4"
         }
       }
@@ -64,7 +65,7 @@
         },
         "screenshot": {
           "type": "static",
-          "count": 2,
+          "count": 1,
           "folder": "screenshots/XiaomiRedmi5Plus"
         }
       }
@@ -95,7 +96,7 @@
         },
         "screenshot": {
           "type": "static",
-          "count": 2,
+          "count": 1,
           "folder": "screenshots/SamsungGalaxyTabS2"
         }
       }
@@ -119,13 +120,14 @@
             "pptx",
             "ppt",
             "odp",
-            "pdf"],
+            "pdf"
+          ],
           "on_error": "exit",
           "folder": "files/SamsungGalaxyS8"
         },
         "screenshot": {
           "type": "static",
-          "count": 2,
+          "count": 1,
           "folder": "screenshots/SamsungGalaxyS8"
         }
       }
@@ -149,14 +151,77 @@
             "pptx",
             "ppt",
             "odp",
-            "pdf"],
+            "pdf"
+          ],
           "on_error": "exit",
           "folder": "files/SamsungGalaxyNote4"
         },
         "screenshot": {
           "type": "static",
-          "count": 2,
+          "count": 1,
           "folder": "screenshots/SamsungGalaxyNote4"
+        }
+      }
+    },
+    {
+      "name": "Samsung Galaxy A8",
+      "udid": "5200953246b0a509",
+      "config": {
+        "opening": {
+          "mode": "smoke",
+          "extensions": [
+            "docx",
+            "doc",
+            "odt",
+            "rtf",
+            "txt",
+            "xlsx",
+            "xls",
+            "ods",
+            "csv",
+            "pptx",
+            "ppt",
+            "odp",
+            "pdf"
+          ],
+          "on_error": "exit",
+          "folder": "files/SamsungGalaxyA8"
+        },
+        "screenshot": {
+          "type": "static",
+          "count": 1,
+          "folder": "screenshots/SamsungGalaxyA8"
+        }
+      }
+    },
+    {
+      "name": "Huawei P30 Pro",
+      "udid": "DUM7N19315000382",
+      "config": {
+        "opening": {
+          "mode": "smoke",
+          "extensions": [
+            "docx",
+            "doc",
+            "odt",
+            "rtf",
+            "txt",
+            "xlsx",
+            "xls",
+            "ods",
+            "csv",
+            "pptx",
+            "ppt",
+            "odp",
+            "pdf"
+          ],
+          "on_error": "exit",
+          "folder": "files/HuaweiP30Pro"
+        },
+        "screenshot": {
+          "type": "static",
+          "count": 1,
+          "folder": "screenshots/HuaweiP30Pro"
         }
       }
     }
