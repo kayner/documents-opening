@@ -11,3 +11,6 @@ dumps/
 
 # Info about files
 config/files_data.json
+
+# Zips
+*.zip
