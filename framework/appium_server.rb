@@ -7,6 +7,8 @@ class AppiumServer
   @@appium_port = 8500
   @@system_port = 8700
 
+  # @param [String] udid, Device udid
+  # @return [AppiumServer] instance
   def initialize(udid)
     @udid = udid
     @appium_port = @@appium_port
