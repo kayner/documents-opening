@@ -2,26 +2,18 @@
 
 # Class for device control
 class Device
-  attr_reader :driver, :config
+  attr_reader :driver, :config, :name, :udid
 
   # @param [Hash] config, Config for device
   # @return [Device] instance
   def initialize(config)
-    @config = config
+    @config = config[:config]
+    @name = config[:name]
+    @udid = config[:udid]
     @capabilities = ConfigHelper.parse('config/config.json')[:capabilities]
     @capabilities[:deviceName] = config[:name]
     @capabilities[:udid] = config[:udid]
     @driver = nil
-  end
-
-  # @return [String] device name
-  def name
-    @config[:name]
-  end
-
-  # @return [String] device udid
-  def udid
-    @config[:udid]
   end
 
   # @param [AppiumServer] to, AppiumServer instance
