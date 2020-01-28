@@ -14,7 +14,8 @@ namespace :prepare do
 
     puts 'Creating subfolders for files'
     config[:devices].each do |device|
-      FileUtils.mkdir_p device[:config][:opening][:folder]
+      FileUtils.mkdir_p device[:config][:opening][:folder] + '/open'
+      FileUtils.mkdir_p device[:config][:opening][:folder] + '/opened'
     end
 
     puts 'Creating subfolders for screenshots'
@@ -32,28 +33,38 @@ namespace :prepare do
   end
 end
 
-namespace :run do
-  task :smoke do
-    log_path = "logs/#{Time.now.strftime '%Y-%m-%d %H:%M:%S'}.txt"
-    logger = Logger.new log_path
-    logger.level = Logger::INFO
-    logger.datetime_format = '%Y-%m-%d %H:%M:%S'
-    logger.info config
+task :smoke do
+  log_path = "logs/#{Time.now.strftime '%Y-%m-%d %H:%M:%S'}.txt"
+  logger = Logger.new log_path
+  logger.level = Logger::INFO
+  logger.datetime_format = '%Y-%m-%d %H:%M:%S'
+  logger.info config
 
-    devices = ADB.devices
-    logger.info "Devices: #{devices}"
+  devices = ADBWrapper.devices
+  logger.info "Devices: #{devices}"
 
-    devices.each do |udid|
-      CommonMethods.prepare_folder config, udid
-      logger.info "Prepared folders for #{udid}"
-    end
-    sleep 5
+  connections = []
+  devices.each do |udid|
+    cfg = ConfigHelper.find_device_by_udid config, udid
+    ADBWrapper.clear_folder udid
+    ADBWrapper.push udid, cfg[:config][:opening][:folder] + '/open'
+    logger.info "Prepared folders for #{udid}"
 
-    connections = CommonMethods.configure_connections config, devices
-    CommonMethods.start_connections connections
-    logger.info "Connections opened for #{connections}"
-
-    threads = Smoke.new(connections, logger).threads
-    threads.each(&:join)
+    connections << { device: Device.new(cfg),
+                     server: AppiumServer.new(udid) }
   end
+  sleep 5
+
+  connections.each do |connection|
+    connection[:server].run
+    sleep 2
+    connection[:device].connect to: connection[:server]
+    logger.info "Connection opened #{connections}"
+  end
+
+  threads = []
+  connections.each do |connection|
+    threads << OpeningMode.factory(connection[:device], logger)
+  end
+  threads.each(&:join)
 end
