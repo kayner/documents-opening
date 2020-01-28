@@ -13,7 +13,7 @@
       "udid": "ce091829a59c39261c7e",
       "config": {
         "opening": {
-          "mode": "smoke",
+          "mode": "screenshot",
           "extensions": [
             "docx",
             "doc",
@@ -44,7 +44,7 @@
       "udid": "29e0a4640904",
       "config": {
         "opening": {
-          "mode": "smoke",
+          "mode": "screenshot",
           "extensions": [
             "docx",
             "doc",
@@ -75,7 +75,7 @@
       "udid": "3300f241f9aca2fb",
       "config": {
         "opening": {
-          "mode": "smoke",
+          "mode": "screenshot",
           "extensions": [
             "docx",
             "doc",
@@ -106,7 +106,7 @@
       "udid": "ce04171441ad90760c",
       "config": {
         "opening": {
-          "mode": "smoke",
+          "mode": "screenshot",
           "extensions": [
             "docx",
             "doc",
@@ -137,7 +137,7 @@
       "udid": "4100b454f28a91f7",
       "config": {
         "opening": {
-          "mode": "smoke",
+          "mode": "screenshot",
           "extensions": [
             "docx",
             "doc",
@@ -168,7 +168,7 @@
       "udid": "5200953246b0a509",
       "config": {
         "opening": {
-          "mode": "smoke",
+          "mode": "screenshot",
           "extensions": [
             "docx",
             "doc",
@@ -199,7 +199,7 @@
       "udid": "DUM7N19315000382",
       "config": {
         "opening": {
-          "mode": "smoke",
+          "mode": "screenshot",
           "extensions": [
             "docx",
             "doc",
