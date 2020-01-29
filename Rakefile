@@ -2,6 +2,32 @@
 
 require_relative 'framework/requirements_manager'
 
+def configure_logger
+  log_path = "logs/#{Time.now.strftime '%Y-%m-%d %H:%M:%S'}.txt"
+  logger = Logger.new log_path
+  logger.level = Logger::INFO
+  logger.datetime_format = '%Y-%m-%d %H:%M:%S'
+  logger
+end
+
+def create_connections(config, devices)
+  devices.map do |udid|
+    cfg = ConfigHelper.find_device_by_udid config, udid
+    ADBWrapper.clear_folder udid
+    ADBWrapper.push udid, cfg[:config][:opening][:folder] + '/open'
+    { device: Device.new(cfg), server: AppiumServer.new(udid) }
+  end
+end
+
+def configure_connections(connections, logger = nil)
+  connections.each do |connection|
+    connection[:server].run
+    sleep 2
+    connection[:device].connect to: connection[:server]
+    logger&.info "Connection opened #{connections}"
+  end
+end
+
 config = ConfigHelper.parse File.join('config', 'config.json')
 root_folders = %w[files screenshots logs dumps]
 
@@ -33,34 +59,17 @@ namespace :prepare do
   end
 end
 
-task :smoke do
-  log_path = "logs/#{Time.now.strftime '%Y-%m-%d %H:%M:%S'}.txt"
-  logger = Logger.new log_path
-  logger.level = Logger::INFO
-  logger.datetime_format = '%Y-%m-%d %H:%M:%S'
+task :run do
+  logger = configure_logger
   logger.info config
 
   devices = ADBWrapper.devices
   logger.info "Devices: #{devices}"
 
-  connections = []
-  devices.each do |udid|
-    cfg = ConfigHelper.find_device_by_udid config, udid
-    ADBWrapper.clear_folder udid
-    ADBWrapper.push udid, cfg[:config][:opening][:folder] + '/open'
-    logger.info "Prepared folders for #{udid}"
-
-    connections << { device: Device.new(cfg),
-                     server: AppiumServer.new(udid) }
-  end
+  connections = create_connections config, devices
   sleep 5
 
-  connections.each do |connection|
-    connection[:server].run
-    sleep 2
-    connection[:device].connect to: connection[:server]
-    logger.info "Connection opened #{connections}"
-  end
+  configure_connections connections, logger
 
   threads = []
   connections.each do |connection|
