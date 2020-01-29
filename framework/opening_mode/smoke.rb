@@ -2,6 +2,8 @@
 
 # Opening mode for checking stability of editors
 class Smoke
+  include AppiumExtension
+
   # @param [Hash] device, Device config
   # @param [Logger] logger, Logger
   # @return [Smoke] instance

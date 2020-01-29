@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require_relative 'opening_mode/export_mode'
 require_relative 'opening_mode/screenshot'
 require_relative 'opening_mode/smoke'
 
@@ -13,7 +14,7 @@ class OpeningMode
     case mode
     when :smoke then Smoke.new(device, logger).thread
     when :screenshot then Screenshot.new(device, logger).thread
-    when :export then Export.new(device, logger).thread
+    when :export then ExportMode.new(device, logger).thread
     else raise ArgumentError "Unknown mode: #{mode}"
     end
   end
