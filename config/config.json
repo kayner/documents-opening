@@ -15,19 +15,7 @@
         "opening": {
           "mode": "screenshot",
           "extensions": [
-            "docx",
-            "doc",
-            "odt",
-            "rtf",
-            "txt",
-            "xlsx",
-            "xls",
-            "ods",
-            "csv",
-            "pptx",
-            "ppt",
-            "odp",
-            "pdf"
+            "docx"
           ],
           "on_error": "exit",
           "folder": "files/SamsungGalaxyTabS4"
@@ -36,6 +24,14 @@
           "type": "static",
           "count": 1,
           "folder": "screenshots/SamsungGalaxyTabS4"
+        },
+        "export": {
+          "extensions": [
+            "docx",
+            "pdf",
+            "rtf",
+            "odt"
+          ]
         }
       }
     },
@@ -46,19 +42,7 @@
         "opening": {
           "mode": "screenshot",
           "extensions": [
-            "docx",
-            "doc",
-            "odt",
-            "rtf",
-            "txt",
-            "xlsx",
-            "xls",
-            "ods",
-            "csv",
-            "pptx",
-            "ppt",
-            "odp",
-            "pdf"
+            "docx"
           ],
           "on_error": "exit",
           "folder": "files/XiaomiRedmi5Plus"
@@ -67,6 +51,14 @@
           "type": "static",
           "count": 1,
           "folder": "screenshots/XiaomiRedmi5Plus"
+        },
+        "export": {
+          "extensions": [
+            "docx",
+            "pdf",
+            "rtf",
+            "odt"
+          ]
         }
       }
     },
@@ -77,19 +69,7 @@
         "opening": {
           "mode": "screenshot",
           "extensions": [
-            "docx",
-            "doc",
-            "odt",
-            "rtf",
-            "txt",
-            "xlsx",
-            "xls",
-            "ods",
-            "csv",
-            "pptx",
-            "ppt",
-            "odp",
-            "pdf"
+            "docx"
           ],
           "on_error": "exit",
           "folder": "files/SamsungGalaxyTabS2"
@@ -98,6 +78,14 @@
           "type": "static",
           "count": 1,
           "folder": "screenshots/SamsungGalaxyTabS2"
+        },
+        "export": {
+          "extensions": [
+            "docx",
+            "pdf",
+            "rtf",
+            "odt"
+          ]
         }
       }
     },
@@ -108,19 +96,7 @@
         "opening": {
           "mode": "screenshot",
           "extensions": [
-            "docx",
-            "doc",
-            "odt",
-            "rtf",
-            "txt",
-            "xlsx",
-            "xls",
-            "ods",
-            "csv",
-            "pptx",
-            "ppt",
-            "odp",
-            "pdf"
+            "docx"
           ],
           "on_error": "exit",
           "folder": "files/SamsungGalaxyS8"
@@ -129,6 +105,14 @@
           "type": "static",
           "count": 1,
           "folder": "screenshots/SamsungGalaxyS8"
+        },
+        "export": {
+          "extensions": [
+            "docx",
+            "pdf",
+            "rtf",
+            "odt"
+          ]
         }
       }
     },
@@ -139,19 +123,7 @@
         "opening": {
           "mode": "screenshot",
           "extensions": [
-            "docx",
-            "doc",
-            "odt",
-            "rtf",
-            "txt",
-            "xlsx",
-            "xls",
-            "ods",
-            "csv",
-            "pptx",
-            "ppt",
-            "odp",
-            "pdf"
+            "docx"
           ],
           "on_error": "exit",
           "folder": "files/SamsungGalaxyNote4"
@@ -160,6 +132,14 @@
           "type": "static",
           "count": 1,
           "folder": "screenshots/SamsungGalaxyNote4"
+        },
+        "export": {
+          "extensions": [
+            "docx",
+            "pdf",
+            "rtf",
+            "odt"
+          ]
         }
       }
     },
@@ -170,19 +150,7 @@
         "opening": {
           "mode": "screenshot",
           "extensions": [
-            "docx",
-            "doc",
-            "odt",
-            "rtf",
-            "txt",
-            "xlsx",
-            "xls",
-            "ods",
-            "csv",
-            "pptx",
-            "ppt",
-            "odp",
-            "pdf"
+            "docx"
           ],
           "on_error": "exit",
           "folder": "files/SamsungGalaxyA8"
@@ -191,6 +159,14 @@
           "type": "static",
           "count": 1,
           "folder": "screenshots/SamsungGalaxyA8"
+        },
+        "export": {
+          "extensions": [
+            "docx",
+            "pdf",
+            "rtf",
+            "odt"
+          ]
         }
       }
     },
@@ -201,19 +177,7 @@
         "opening": {
           "mode": "screenshot",
           "extensions": [
-            "docx",
-            "doc",
-            "odt",
-            "rtf",
-            "txt",
-            "xlsx",
-            "xls",
-            "ods",
-            "csv",
-            "pptx",
-            "ppt",
-            "odp",
-            "pdf"
+            "docx"
           ],
           "on_error": "exit",
           "folder": "files/HuaweiP30Pro"
@@ -222,6 +186,14 @@
           "type": "static",
           "count": 1,
           "folder": "screenshots/HuaweiP30Pro"
+        },
+        "export": {
+          "extensions": [
+            "docx",
+            "pdf",
+            "rtf",
+            "odt"
+          ]
         }
       }
     }
