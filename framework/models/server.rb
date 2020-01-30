@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 # Class for creating Appium Server
-class AppiumServer
+class Server
   attr_reader :appium_port, :system_port, :udid
 
   @@appium_port = 8500

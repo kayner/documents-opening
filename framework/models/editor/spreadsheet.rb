@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
-module EditorModel
-  # Class for control spreadsheet editor behavior
-  class Spreadsheet < FileModel::Base
+module Editor
+  # Class for working with spreadsheets
+  class Spreadsheet < Editor::Base
     def export(extension)
-      settings
+      open_settings
       click driver: @driver, id: ID::EXPORT_SPREADSHEET_BTN
       click driver: @driver, id: export_extension_to_id(extension)
     end

@@ -148,7 +148,7 @@
       "udid": "5200953246b0a509",
       "config": {
         "opening": {
-          "mode": "screenshot",
+          "mode": "export",
           "extensions": [
             "docx"
           ],

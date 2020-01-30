@@ -6,11 +6,11 @@ class Device
 
   # @param [Hash] config, Config for device
   # @return [Device] instance
-  def initialize(config)
+  def initialize(config, capabilities)
     @config = config[:config]
     @name = config[:name]
     @udid = config[:udid]
-    @capabilities = ConfigHelper.parse('config/config.json')[:capabilities]
+    @capabilities = capabilities
     @capabilities[:deviceName] = config[:name]
     @capabilities[:udid] = config[:udid]
     @driver = nil

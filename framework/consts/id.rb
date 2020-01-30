@@ -14,7 +14,7 @@ module ID
   EXPORT_DOCUMENT_TO_DOCX = 'docsSaveDocx'
   EXPORT_DOCUMENT_TO_PDF = 'docsSavePdf'
   EXPORT_DOCUMENT_TO_RTF = 'docsSaveRtf'
-  EXPORT_DOCUMENT_TO_ODF = 'docsSaveOdf'
+  EXPORT_DOCUMENT_TO_ODT = 'docsSaveOdf'
 
   EXPORT_SPREADSHEET_BTN = 'cellsSettingsItemDownload'
   EXPORT_SPREADSHEET_TO_XLSX = 'cellsSaveXlsx'

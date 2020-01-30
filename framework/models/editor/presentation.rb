@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
-module EditorModel
-  # Class for control presentation editor behavior
-  class Presentation < FileModel::Base
+module Editor
+  # Class for working with presentations
+  class Presentation < Editor::Base
     def export(extension)
-      settings
+      open_settings
       click driver: @driver, id: ID::EXPORT_PRESENTATION_BTN
       click driver: @driver, id: export_extension_to_id(extension)
     end

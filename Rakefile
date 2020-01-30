@@ -2,33 +2,8 @@
 
 require_relative 'framework/requirements_manager'
 
-def configure_logger
-  log_path = "logs/#{Time.now.strftime '%Y-%m-%d %H:%M:%S'}.txt"
-  logger = Logger.new log_path
-  logger.level = Logger::INFO
-  logger.datetime_format = '%Y-%m-%d %H:%M:%S'
-  logger
-end
-
-def create_connections(config, devices)
-  devices.map do |udid|
-    cfg = ConfigHelper.find_device_by_udid config, udid
-    ADBWrapper.clear_folder udid
-    ADBWrapper.push udid, cfg[:config][:opening][:folder] + '/open'
-    { device: Device.new(cfg), server: AppiumServer.new(udid) }
-  end
-end
-
-def configure_connections(connections, logger = nil)
-  connections.each do |connection|
-    connection[:server].run
-    sleep 2
-    connection[:device].connect to: connection[:server]
-    logger&.info "Connection opened #{connections}"
-  end
-end
-
-config = ConfigHelper.parse File.join('config', 'config.json')
+config_reader = Helper::Config.new File.join('config', 'config.json')
+capabilities = config_reader.capabilities
 root_folders = %w[files screenshots logs dumps]
 
 Selenium::WebDriver.logger.level = :error
@@ -59,21 +34,30 @@ namespace :prepare do
   end
 end
 
-task :run do
-  logger = configure_logger
-  logger.info config
-
-  devices = ADBWrapper.devices
-  logger.info "Devices: #{devices}"
-
-  connections = create_connections config, devices
-  sleep 5
-
-  configure_connections connections, logger
-
-  threads = []
-  connections.each do |connection|
-    threads << OpeningMode.factory(connection[:device], logger)
+task :status do
+  ADBWrapper.devices.each do |udid|
+    config[:devices].each do |device|
+      if device[:udid] == udid
+        puts "#{device[:name]} mode: #{device[:config][:opening][:mode]}"
+      end
+    end
   end
-  threads.each(&:join)
+end
+
+task :run do
+  logger = LoggerWrapper.new Logger::INFO
+  connected_device = ADBWrapper.devices
+  connections = []
+
+  connected_device.each do |udid|
+    device_config = config_reader.by_udid udid
+    device = Device.new device_config, capabilities
+    connections << Connection.new(device)
+
+    ADBWrapper.clear_folder udid
+    ADBWrapper.push udid, device.config[:opening][:folder] + '/open'
+  end
+
+  runner = Opening.new connections, logger
+  runner.start
 end
