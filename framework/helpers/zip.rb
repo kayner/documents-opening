@@ -2,7 +2,7 @@
 
 module Helper
   # Class for zipping folders
-  class ZIPHelper
+  class ZIP
     # @param [String] folder_path, Path to folder for zipping
     # @param [Object] zip_path, Path for saving zip
     def self.compress(folder_path, zip_path)
