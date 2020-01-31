@@ -32,18 +32,20 @@ namespace :prepare do
   end
 end
 
-task :dump do
-  dumper.perform_each %w[files screenshots]
-end
+namespace :manage do
+  task :dump do
+    dumper.perform_each %w[files screenshots]
+  end
 
-task :compress do
-  dir_name = 'zips'
-  FileUtils.mkdir_p dir_name
-  config_reader.config[:devices].each do |device|
-    files_name = device[:config][:opening][:folder]
-    scr_name  = device[:config][:screenshot][:folder]
-    Helper::ZIP.compress files_name + '/opened', "#{files_name}_Files.zip"
-    Helper::ZIP.compress scr_name, "#{scr_name}_Screenshots.zip"
+  task :compress do
+    dir_name = 'zips'
+    FileUtils.mkdir_p dir_name
+    config_reader.config[:devices].each do |device|
+      files_name = device[:config][:opening][:folder]
+      scr_name  = device[:config][:screenshot][:folder]
+      Helper::ZIP.compress files_name + '/opened', "#{files_name}_Files.zip"
+      Helper::ZIP.compress scr_name, "#{scr_name}_Screenshots.zip"
+    end
   end
 end
 
