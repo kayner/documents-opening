@@ -42,7 +42,7 @@ namespace :manage do
     FileUtils.mkdir_p dir_name
     config_reader.config[:devices].each do |device|
       files_name = device[:config][:opening][:folder]
-      scr_name  = device[:config][:screenshot][:folder]
+      scr_name = device[:config][:screenshot][:folder]
       Helper::ZIP.compress files_name + '/opened', "#{files_name}_Files.zip"
       Helper::ZIP.compress scr_name, "#{scr_name}_Screenshots.zip"
     end
