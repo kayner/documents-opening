@@ -10,17 +10,14 @@ Selenium::WebDriver.logger.level = :error
 
 namespace :prepare do
   task :folders do
-    puts 'Creating folders in project root'
     FileUtils.mkdir_p root_folders
 
-    puts 'Creating subfolders for files'
-    config[:devices].each do |device|
+    config_reader.config[:devices].each do |device|
       FileUtils.mkdir_p device[:config][:opening][:folder] + '/open'
       FileUtils.mkdir_p device[:config][:opening][:folder] + '/opened'
     end
 
-    puts 'Creating subfolders for screenshots'
-    config[:devices].each do |device|
+    config_reader.config[:devices].each do |device|
       FileUtils.mkdir_p device[:config][:screenshot][:folder]
     end
   end
@@ -31,16 +28,6 @@ namespace :prepare do
     end
 
     puts "config.json : #{File.file? 'config/config.json'}"
-  end
-end
-
-task :status do
-  ADBWrapper.devices.each do |udid|
-    config[:devices].each do |device|
-      if device[:udid] == udid
-        puts "#{device[:name]} mode: #{device[:config][:opening][:mode]}"
-      end
-    end
   end
 end
 
