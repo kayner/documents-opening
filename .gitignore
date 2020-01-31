@@ -2,6 +2,7 @@
 Gemfile.lock
 
 # Input data
+all_files/
 files/
 
 # Output data
