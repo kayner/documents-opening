@@ -4,6 +4,7 @@ require_relative 'framework/requirements_manager'
 
 config_reader = Helper::Config.new File.join('config', 'config.json')
 capabilities = config_reader.capabilities
+dumper = Helper::Dump.new 'dumps'
 root_folders = %w[files screenshots logs dumps]
 
 Selenium::WebDriver.logger.level = :error
@@ -28,6 +29,21 @@ namespace :prepare do
     end
 
     puts "config.json : #{File.file? 'config/config.json'}"
+  end
+end
+
+task :dump do
+  dumper.perform_each %w[files screenshots]
+end
+
+task :compress do
+  dir_name = 'zips'
+  FileUtils.mkdir_p dir_name
+  config_reader.config[:devices].each do |device|
+    files_name = device[:config][:opening][:folder]
+    scr_name  = device[:config][:screenshot][:folder]
+    Helper::ZIP.compress files_name + '/opened', "#{files_name}_Files.zip"
+    Helper::ZIP.compress scr_name, "#{scr_name}_Screenshots.zip"
   end
 end
 
