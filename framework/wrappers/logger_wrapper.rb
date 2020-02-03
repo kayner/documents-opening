@@ -15,7 +15,7 @@ class LoggerWrapper
 
   # @param [String] device, Device tag
   # @param [Object] message, Message for writing
-  def write(device, message)
+  def info(device, message)
     @instance.info template(device, message)
   end
 
