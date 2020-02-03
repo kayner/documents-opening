@@ -2,6 +2,9 @@
 
 # Class for control screenshot behavior
 class Screenshot
+  attr_reader :binary_img
+  include ChunkyPNG::Color
+
   # @param [String] path
   # @return [Screenshot] instance
   def initialize(path)
@@ -14,7 +17,7 @@ class Screenshot
     diff = []
     @binary_img.height.times do |y|
       @binary_img.row(y).each_with_index do |pixel, x|
-        diff << [x, y] unless pixel == screenshot[x, y]
+        diff << [x, y] unless pixel == screenshot.binary_img[x, y]
       end
     end
     100 * diff.length.to_f / @binary_img.pixels.length
@@ -23,6 +26,7 @@ class Screenshot
   # @param [Screenshot] scr, Screenshot
   # @param [String] name, Different map name
   def different_map(scr, name)
+    scr = scr.binary_img
     @binary_img.height.times do |y|
       @binary_img.row(y).each_with_index do |px, x|
         scr[x, y] = rgb(r(px) + r(scr[x, y]) - 2 * [r(px), r(scr[x, y])].min,
