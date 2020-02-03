@@ -2,7 +2,7 @@
 
 # Class for control screenshot behavior
 class Screenshot
-  # @param [Object] path
+  # @param [String] path
   # @return [Screenshot] instance
   def initialize(path)
     @binary_img = ChunkyPNG::Image.from_file path
