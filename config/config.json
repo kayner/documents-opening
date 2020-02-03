@@ -17,11 +17,9 @@
           "extensions": [
             "docx"
           ],
-          "on_error": "exit",
           "folder": "files/SamsungGalaxyTabS4"
         },
         "screenshot": {
-          "type": "static",
           "count": 1,
           "folder": "screenshots/SamsungGalaxyTabS4"
         },
@@ -44,11 +42,9 @@
           "extensions": [
             "docx"
           ],
-          "on_error": "exit",
           "folder": "files/XiaomiRedmi5Plus"
         },
         "screenshot": {
-          "type": "static",
           "count": 1,
           "folder": "screenshots/XiaomiRedmi5Plus"
         },
@@ -71,11 +67,9 @@
           "extensions": [
             "docx"
           ],
-          "on_error": "exit",
           "folder": "files/SamsungGalaxyTabS2"
         },
         "screenshot": {
-          "type": "static",
           "count": 1,
           "folder": "screenshots/SamsungGalaxyTabS2"
         },
@@ -98,11 +92,9 @@
           "extensions": [
             "docx"
           ],
-          "on_error": "exit",
           "folder": "files/SamsungGalaxyS8"
         },
         "screenshot": {
-          "type": "static",
           "count": 1,
           "folder": "screenshots/SamsungGalaxyS8"
         },
@@ -125,11 +117,9 @@
           "extensions": [
             "docx"
           ],
-          "on_error": "exit",
           "folder": "files/SamsungGalaxyNote4"
         },
         "screenshot": {
-          "type": "static",
           "count": 1,
           "folder": "screenshots/SamsungGalaxyNote4"
         },
@@ -152,11 +142,9 @@
           "extensions": [
             "docx"
           ],
-          "on_error": "exit",
           "folder": "files/SamsungGalaxyA8"
         },
         "screenshot": {
-          "type": "static",
           "count": 1,
           "folder": "screenshots/SamsungGalaxyA8"
         },
@@ -179,11 +167,9 @@
           "extensions": [
             "docx"
           ],
-          "on_error": "exit",
           "folder": "files/HuaweiP30Pro"
         },
         "screenshot": {
-          "type": "static",
           "count": 1,
           "folder": "screenshots/HuaweiP30Pro"
         },
