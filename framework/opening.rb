@@ -78,10 +78,13 @@ class Opening
       driver = device.driver
       opening_dir = get_device_opening_dir device
       opened_dir = get_device_opened_dir device
+      exts = device.config[:opening][:extensions]
 
       open_on_device_section driver
 
       Helper::Folder.files(opening_dir, mode: :short).each do |file|
+        next unless exts.include? File.extname(file)
+
         open_file driver, file
 
         if file_opened?(driver, 120)
