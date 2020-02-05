@@ -3,7 +3,6 @@
 require_relative 'framework/requirements_manager'
 
 config_reader = Helper::Config.new File.join('config', 'config.json')
-capabilities = config_reader.capabilities
 dumper = Helper::Dump.new 'dumps'
 root_folders = %w[files screenshots logs dumps]
 
@@ -52,17 +51,18 @@ end
 task :run do
   logger = LoggerWrapper.new Logger::INFO
   connected_device = ADBWrapper.devices
-  connections = []
+  devices = []
 
   connected_device.each do |udid|
+    capabilities = config_reader.capabilities
     device_config = config_reader.by_udid udid
-    device = Device.new device_config, capabilities
-    connections << Connection.new(device)
+    device = Device.new(device_config, capabilities)
+    devices << device
 
     ADBWrapper.clear_folder udid
     ADBWrapper.push udid, device.config[:opening][:folder] + '/open'
   end
 
-  runner = Opening.new connections, logger
+  runner = Opening.new devices, logger
   runner.start
 end

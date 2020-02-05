@@ -4,11 +4,11 @@
 class Opening
   include AppiumWrapper
 
-  # @param [Array[Connection]] connections, Configured connections
+  # @param [Array[Device]] devices, Configured devices
   # @param [LoggerWrapper] logger, Instance of LoggerWrapper class
   # @return [Opening] instance
-  def initialize(connections, logger)
-    @connections = connections
+  def initialize(devices, logger)
+    @devices = devices
     @logger = logger
   end
 
@@ -104,18 +104,15 @@ class Opening
       driver = device.driver
       opening_dir = get_device_opening_dir device
       opened_dir = get_device_opened_dir device
-      exts = device.config[:opening][:extensions]
 
       open_on_device_section driver
 
       Helper::Folder.files(opening_dir, mode: :short).each do |file|
-        next unless exts.include? File.extname(file)
-
         @logger.info device.name, "started opening #{file}"
         open_file driver, file
 
         if file_opened?(driver, 120)
-          @logger.info device.name "successful opening #{file}"
+          @logger.info device.name, "successful opening #{file}"
           move_opened_file file, opening_dir, opened_dir
           sleep 3
 
@@ -135,9 +132,14 @@ class Opening
   end
 
   def start
-    @connections.each(&:start)
-    threads = @connections.map { |conn| create_thread conn.device }
+    @devices.each do |device|
+      server_instance = Server.new device.udid
+      server_instance.run
+      sleep 2
+      device.connect to: server_instance
+    end
+    threads = @devices.map { |device| create_thread device }
     threads.each(&:join)
-    @connections.each(&:stop)
+    @devices.each(&:disconnect)
   end
 end

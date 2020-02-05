@@ -14,9 +14,6 @@
       "config": {
         "opening": {
           "mode": "screenshot",
-          "extensions": [
-            "docx"
-          ],
           "folder": "files/SamsungGalaxyTabS4"
         },
         "screenshot": {
@@ -39,9 +36,6 @@
       "config": {
         "opening": {
           "mode": "screenshot",
-          "extensions": [
-            "docx"
-          ],
           "folder": "files/XiaomiRedmi5Plus"
         },
         "screenshot": {
@@ -64,9 +58,6 @@
       "config": {
         "opening": {
           "mode": "screenshot",
-          "extensions": [
-            "docx"
-          ],
           "folder": "files/SamsungGalaxyTabS2"
         },
         "screenshot": {
@@ -89,9 +80,6 @@
       "config": {
         "opening": {
           "mode": "screenshot",
-          "extensions": [
-            "docx"
-          ],
           "folder": "files/SamsungGalaxyS8"
         },
         "screenshot": {
@@ -114,9 +102,6 @@
       "config": {
         "opening": {
           "mode": "screenshot",
-          "extensions": [
-            "docx"
-          ],
           "folder": "files/SamsungGalaxyNote4"
         },
         "screenshot": {
@@ -138,10 +123,7 @@
       "udid": "5200953246b0a509",
       "config": {
         "opening": {
-          "mode": "export",
-          "extensions": [
-            "docx"
-          ],
+          "mode": "screenshot",
           "folder": "files/SamsungGalaxyA8"
         },
         "screenshot": {
@@ -164,9 +146,6 @@
       "config": {
         "opening": {
           "mode": "screenshot",
-          "extensions": [
-            "docx"
-          ],
           "folder": "files/HuaweiP30Pro"
         },
         "screenshot": {
