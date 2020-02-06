@@ -26,4 +26,6 @@ module ID
   EXPORT_PRESENTATION_TO_PPTX = 'slidesSavePptx'
   EXPORT_PRESENTATION_TO_PDF = 'slidesSavePdf'
   EXPORT_PRESENTATION_TO_ODP = 'slidesSaveOdp'
+
+  EXPORT_LOADER = 'dialogCommonWaitingProgressBarCircle'
 end

@@ -95,6 +95,12 @@ class Opening
       document.open_settings
       document.export extension
       sleep 3
+      60.times do
+        break if elements(driver: device.driver, id: ID::EXPORT_LOADER).count.zero?
+
+        sleep 1
+      end
+      sleep 3
     end
   end
 
@@ -126,6 +132,7 @@ class Opening
         else
           @logger.warn device.name, "failed opening #{file}"
           stop_file_opening driver
+          move_opened_file file, opening_dir, opened_dir
         end
       end
     end
