@@ -18,7 +18,7 @@ class Server
   end
 
   def run
-    system "gnome-terminal -- appium -p #{@appium_port} -dc \"{\\\"udid\\\":"\
+    system "x-terminal-emulator -e appium -p #{@appium_port} -dc \"{\\\"udid\\\":"\
             " \\\"#{@udid}\\\", \\\"systemPort\\\":#{@system_port}}\""
   end
 end
