@@ -7,7 +7,6 @@ require 'logger'
 
 require_relative 'consts/id'
 require_relative 'helpers/helper'
-require_relative 'models/device'
 require_relative 'models/editor'
 require_relative 'models/server'
 require_relative 'wrappers/adb_wrapper'
