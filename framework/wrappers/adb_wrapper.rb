@@ -1,23 +1,22 @@
 # frozen_string_literal: true
 
-# Class for extending adb functional
-class ADBWrapper
-  # @return [Array[String]] list of connected devices
+# Class for wrapping adb functional
+class ADB
   def self.devices
-    split_n = `adb devices`.split("\n")
-    split_n[1, split_n.count].map do |line|
-      line.split("\t")[0]
+    `#{Static::ADB_PATH} devices`.split("\n")[1..-1].map do |line|
+      line.split("\t").first
     end
   end
 
-  # @param [String] udid, Udid of device
-  # @param [String] folder, Path to copying folder
-  def self.push(udid, folder)
-    `adb -s #{udid} push #{folder}/. /sdcard/OnlyOffice`
+  def self.push_folder(udid, path_to_folder)
+    `#{Static::ADB_PATH} -s #{udid} push #{path_to_folder}/. /sdcard/Onlyoffice`
   end
 
-  # @param [String] udid, Udid of device
   def self.clear_folder(udid)
-    `adb -s #{udid} shell rm -rf /sdcard/OnlyOffice/*`
+    `#{Static::ADB_PATH} -s #{udid} shell rm -rf /sdcard/Onlyoffice/*`
+  end
+
+  def self.remove_file(udid, file)
+    `#{Static::ADB_PATH} -s #{udid} shell rm /sdcard/Onlyoffice/#{file}`
   end
 end
