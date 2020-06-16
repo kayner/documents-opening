@@ -1,68 +1,59 @@
 # frozen_string_literal: true
 
-require_relative 'framework/requirements_manager'
+require_relative 'framework/opening'
 
-config_reader = Helper::Config.new File.join('config', 'config.json')
-dumper = Helper::Dump.new 'dumps'
-root_folders = %w[files screenshots logs dumps]
+config = JSON.parse File.read('config.json'), symbolize_names: true
+project_folders = %w[files screenshots logs apk]
 
 Selenium::WebDriver.logger.level = :error
 
 namespace :prepare do
   task :folders do
-    FileUtils.mkdir_p root_folders
+    FileUtils.mkdir_p project_folders
 
-    config_reader.config[:devices].each do |device|
-      FileUtils.mkdir_p device[:config][:opening][:folder] + '/open'
-      FileUtils.mkdir_p device[:config][:opening][:folder] + '/opened'
+    config[:devices].each do |device|
+      FileUtils.mkdir_p File.join('files', device[:name].split(' ').join(''), 'to_open')
+      FileUtils.mkdir_p File.join('files', device[:name].split(' ').join(''), 'opened')
+      FileUtils.mkdir_p File.join('files', device[:name].split(' ').join(''), 'not_opened')
     end
 
-    config_reader.config[:devices].each do |device|
-      FileUtils.mkdir_p device[:config][:screenshot][:folder]
-    end
-  end
-
-  task :check do
-    root_folders.each do |root_folder|
-      puts "#{root_folder} : #{File.exist? root_folder}"
-    end
-
-    puts "config.json : #{File.file? 'config/config.json'}"
-  end
-end
-
-namespace :manage do
-  task :dump do
-    dumper.perform_each %w[files screenshots]
-  end
-
-  task :compress do
-    dir_name = 'zips'
-    FileUtils.mkdir_p dir_name
-    config_reader.config[:devices].each do |device|
-      files_name = device[:config][:opening][:folder]
-      scr_name = device[:config][:screenshot][:folder]
-      Helper::ZIP.compress files_name + '/opened', "#{files_name}_Files.zip"
-      Helper::ZIP.compress scr_name, "#{scr_name}_Screenshots.zip"
+    config[:devices].each do |device|
+      FileUtils.mkdir_p File.join('screenshots', device[:name].split(' ').join(''))
     end
   end
 end
 
-task :run do
-  logger = LoggerWrapper.new Logger::INFO
-  connected_device = ADBWrapper.devices
-  devices = []
-
-  connected_device.each do |udid|
-    capabilities = config_reader.capabilities
-    device_config = config_reader.by_udid udid
-    device = Device.new(device_config, capabilities)
-    devices << device
-
-    ADBWrapper.clear_folder udid
-    ADBWrapper.push udid, device.config[:opening][:folder] + '/open'
+namespace :run do
+  desc 'Run test on all connected devices and emulators'
+  task :all do
+    ADB.devices.each do |udid|
+      `gnome-terminal -- rake run:single udid=#{udid}`
+    end
   end
 
-  runner = Opening.new devices, logger
-  runner.start
+  desc 'Desc'
+  task :single do
+    begin
+      device_config = {}
+    config[:devices].each do |device|
+      device_config = device if device[:udid] == ENV['udid']
+    end
+    device_config[:capabilities] = config[:capabilities]
+    device_config[:capabilities][:udid] = device_config[:udid]
+    device_config[:capabilities][:deviceName] = device_config[:name]
+    device_config[:failures] = config[:failures]
+    device_config[:mode] = config[:mode]
+
+    opener = Opening.new device_config
+    ADB.clear_folder ENV['udid']
+    ADB.push_folder ENV['udid'], opener.open_path
+    opener.start
+    opener.stop
+    rescue => exception
+      puts exception
+    ensure
+    puts 'Press any key for exit...'
+    STDIN.gets
+    end
+  end
 end
