@@ -1,0 +1,28 @@
+{
+  "mode": "screenshot",
+  "failures": 3,
+  "capabilities": {
+    "appActivity": "app.editors.manager.ui.activities.login.SplashActivity",
+    "appPackage": "com.onlyoffice.documents",
+    "autoGrantPermissions": true,
+    "automationName": "UiAutomator2",
+    "language": "gb",
+    "locale": "EN",
+    "newCommandTimeout": "3600",
+    "platformName": "Android"
+  },
+  "devices": [
+    {
+      "udid": "192.168.56.101:5555",
+      "name": "Emulator 1",
+      "system_port": 8501,
+      "appium_port": 8601
+    },
+    {
+      "udid": "192.168.56.102:5555",
+      "name": "Emulator 2",
+      "system_port": 8502,
+      "appium_port": 8602
+    }
+  ]
+}
