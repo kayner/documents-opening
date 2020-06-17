@@ -15,3 +15,6 @@ config/files_data.json
 
 # Zips
 *.zip
+
+# temp
+temp/
