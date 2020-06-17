@@ -26,8 +26,7 @@ class Opening
     @server = Server.new @config[:capabilities][:udid], @config[:appium_port],
                          @config[:system_port]
     Appium::Driver.new caps: @config[:capabilities],
-                       appium_lib: { port: @config[:appium_port] },
-                       true
+                       appium_lib: { port: @config[:appium_port] }
     Appium.promote_appium_methods [Object]
     @server.run
     @driver.start_driver
